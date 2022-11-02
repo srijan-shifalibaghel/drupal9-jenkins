@@ -27,16 +27,16 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "config": {
+        "platform": {
+            "php": "8.1"
+        },
         "allow-plugins": {
             "composer/installers": true,
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
             "dealerdirect/phpcodesniffer-composer-installer": true
         },
-        "sort-packages": true,
-        "platform": {
-            "php": "7.4.0"
-        }
+        "platform-check": false
     },
     "extra": {
         "drupal-scaffold": {
