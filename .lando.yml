@@ -1,0 +1,26 @@
+name: drupal9-jenkins
+recipe: drupal9
+config:
+  php: '8.1'
+  via: apache
+  webroot: web/
+  drush: ^10
+  xdebug: false
+proxy:
+  appserver:
+    - drupal9-jenkins.lndo.site
+services:
+  drupal9-jenkins:
+    type: mysql
+    portforward: true
+    config:
+      confd: lando/mysql/conf.d
+  appserver:
+    build:
+      - "cd /app && composer install"
+    run:
+      - composer self-update
+tooling:
+  "drush":
+    cmd: "/app/vendor/bin/drush --root=/app/docroot"
+    description: "Runs drush command. Ex: lando drush _yourcommand_"
